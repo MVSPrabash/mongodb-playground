@@ -12,6 +12,8 @@ mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log("Connected to MongoDB"))
   .catch((err) => console.error(err));
 
+const { logger } = require('./middleware/logger.middleware.js');
+app.use('/', logger);
 
 const { router } = require('./routes/studentRoutes.js');
 app.use('/students', router);
